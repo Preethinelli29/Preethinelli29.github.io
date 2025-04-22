@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .checkbox-group {
+            margin: 10px 0;
+        }
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .checkbox-option input {
+            width: auto;
+            margin-right: 10px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .success-message {
+            display: none;
+            background-color: #d5f5e3;
+            color: #27ae60;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #2ecc71;
+        }
+        .section-title {
+            font-size: 18px;
+            color: #3498db;
+            margin: 25px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book Your Tour</h1>
+    <form id="tourBookingForm">
+        <div class="section-title">Personal Information</div>
+        
+        <div class="form-group">
+            <label for="name">Full Name*</label>
+            <input type="text" id="name" name="name" placeholder="Your full name">
+            <div id="nameError" class="error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email Address*</label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com">
+            <div id="emailError" class="error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Phone Number*</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 9876543210">
+            <div id="phoneError" class="error"></div>
+        </div>
+        
+        <div class="section-title">Tour Details</div>
+        
+        <div class="form-group">
+            <label>Tour Package*</label>
+            <div class="checkbox-group" id="tourPackageGroup">
+                <div class="checkbox-option">
+                    <input type="checkbox" id="andhra" name="tourPackage" value="Andhra Pradesh">
+                    <label for="andhra">Andhra Pradesh</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="kerala" name="tourPackage" value="Kerala">
+                    <label for="kerala">Kerala</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="rajasthan" name="tourPackage" value="Rajasthan">
+                    <label for="rajasthan">Rajasthan</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="goa" name="tourPackage" value="Goa">
+                    <label for="goa">Goa</label>
+                </div>
+            </div>
+            <div id="packageError" class="error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="startDate">Preferred Start Date*</label>
+            <input type="date" id="startDate" name="startDate">
+            <div id="dateError" class="error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="duration">Duration (Days)*</label>
+            <select id="duration" name="duration">
+                <option value="">Select duration</option>
+                <option value="3">3 Days</option>
+                <option value="5">5 Days</option>
+                <option value="7">7 Days</option>
+                <option value="10">10 Days</option>
+                <option value="14">14 Days</option>
+            </select>
+            <div id="durationError" class="error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="people">Number of People*</label>
+            <input type="number" id="people" name="people" min="1" max="20" placeholder="1">
+            <div id="peopleError" class="error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="budget">Budget Per Person ($)*</label>
+            <input type="number" id="budget" name="budget" min="50" placeholder="500">
+            <div id="budgetError" class="error"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="requests">Special Requests</label>
+            <textarea id="requests" name="requests" rows="4" placeholder="Any special requirements or notes"></textarea>
+        </div>
+        
+        <button type="submit">Submit Booking Request</button>
+    </form>
+    
+    <div id="successMessage" class="success-message">
+        <h3>Thank you for your booking request!</h3>
+        <p>We've received your tour booking details. Our team will contact you within 24 hours to confirm your booking.</p>
+    </div>
+
+    <script src="tour-booking.js"></script>
+</body>
+</html>

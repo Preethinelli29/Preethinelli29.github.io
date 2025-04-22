@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore India - Premium Tourist Guide Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #f9f9f9;
+            --text-color: #333;
+            --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #f1c40f;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+      
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .info-details h3 {
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        /* Query Section */
+        .query-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .query-item {
+            background: var(--light-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .query-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .query-item h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .query-item i {
+            margin-right: 10px;
+        }
+
+       
+        /* Booking Form */
+        .booking-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            grid-column: span 2;
+        }
+
+        .submit-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* Reviews Section */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .review-card:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 60px;
+            color: rgba(0, 0, 0, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .review-content {
+            margin-bottom: 15px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .author-info h4 {
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+         
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>Preethi Jasmine</h1>
+            <p>Your Expert Guide to Incredible India</p>
+            <a href="#booking" class="cta-button">Book Your Tour Now</a>
+        </div>
+    </div>
+
+    <div class="container">
+ 
+        <section class="card">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-info">
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="info-details">
+                        <h3>Phone Number</h3>
+                        <p>+91 98765 43210</p>
+                        <p>(WhatsApp Available)</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-details">
+                        <h3>Email</h3>
+                        <p>preethi.tourguide@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-details">
+                        <h3>Based In</h3>
+                        <p>Delhi, India</p>
+                        <p>(Tours Available Across India)</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-globe"></i></div>
+                    <div class="info-details">
+                        <h3>Social Media</h3>
+                        <p>@TravelWithPreethi</p>
+                        <p>(Instagram, Facebook, YouTube)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card">
+            <h2 class="section-title">Popular Tour Experiences</h2>
+            <div class="query-grid">
+                <div class="query-item">
+                    <h3><i class="fas fa-landmark"></i> Historical Tours</h3>
+                    <p>Explore ancient forts, palaces, and UNESCO World Heritage sites across India.</p>
+                </div>
+
+                <div class="query-item">
+                    <h3><i class="fas fa-hiking"></i> Adventure Trips</h3>
+                    <p>Himalayan treks, desert safaris, water sports, and thrilling activities.</p>
+                </div>
+
+                <div class="query-item">
+                    <h3><i class="fas fa-theater-masks"></i> Cultural Experiences</h3>
+                    <p>Local festivals, traditional dances, village stays, and artisan workshops.</p>
+                </div>
+
+                <div class="query-item">
+                    <h3><i class="fas fa-utensils"></i> Food & Market Tours</h3>
+                    <p>Street food walks, spice market tours, and authentic cooking classes.</p>
+                </div>
+
+                <div class="query-item">
+                    <h3><i class="fas fa-om"></i> Spiritual Journeys</h3>
+                    <p>Temple visits, yoga retreats, meditation centers, and sacred river tours.</p>
+                </div>
+
+                <div class="query-item">
+                    <h3><i class="fas fa-paw"></i> Wildlife Safaris</h3>
+                    <p>Jungle safaris in Ranthambore, Kaziranga, Sundarbans, and more.</p>
+                </div>
+            </div>
+        </section>
+
+       
+                        <section id="booking" class="card">
+            <h2 class="section-title">Book Your Tour</h2>
+            <form class="booking-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="tour">Tour Package</label>
+                    <select id="tour" name="tour" required>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="West Bengal">West Bengal</option>                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Start Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duration (Days)</label>
+                    <input type="number" id="duration" name="duration" min="1" max="30" required>
+                </div>
+                <div class="form-group">
+                    <label for="people">Number of People</label>
+                    <input type="number" id="people" name="people" min="1" max="20" required>
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget Per Person (₹)</label>
+                    <input type="number" id="budget" name="budget" min="5000" step="1000">
+                </div>
+                <div class="form-group full-width">
+                    <label for="message">Special Requests</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Booking Request</button>
+<div id="success-message" style="display:none; color:green; font-weight:600; text-align:center;">
+    Your booking request has been sent successfully!
+</div>
+               
+ 
+            </form>
+                  </section>
+
+        <!-- Customer Reviews Section -->
+        <section class="card">
+            <h2 class="section-title">What Our Travelers Say</h2>
+            <div class="reviews-container">
+                <div class="review-card">
+                    <div class="review-content">
+                        Preethi made our Golden Triangle tour unforgettable! Her knowledge of history brought each site to life. The hotels She selected were perfect, and She always knew the best local restaurants.
+                    </div>
+                    <div class="review-author">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>London, UK</p>
+                                                    </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-content">
+                        The Kerala backwaters tour was magical! Preethi arranged a beautiful houseboat and introduced us to authentic local cuisine. Her attention to detail and friendly nature made all the difference.
+                    </div>
+                    <div class="review-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Singapore</p>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-content">
+                        As a solo female traveler, I felt completely safe with Preethi guiding me through Rajasthan. She customized the itinerary based on my interests in textiles and crafts. Highly recommend!
+                    </div>
+                    <div class="review-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emma Rodriguez" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Emma Rodriguez</h4>
+                            <p>Mexico City, Mexico</p>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <h3>Explore India with Preethi Jasmine</h3>
+            <div class="social-links">
+                <a href="https://www.instagram.com/traveldesignindiatourism/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/groups/tourguidesofindia/"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/shammastravels/"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.youtube.com/results?search_query=tourist+guide+in+india"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="copyright">© 2025 TravelWithPreethi. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+<script>
+    document.querySelector('.booking-form').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevents actual form submission
+        document.getElementById('success-message').style.display = 'block';
+        
+        document.getElementById('success-message').scrollIntoView({ behavior: 'smooth' });
+        
+        this.reset();
+    });
+</script>
+    </body>
+</html>

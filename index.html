@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Project</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.holidify.com/images/bgImages/KASHMIR.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: 'Lobster', cursive;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 4vw;
+            color: white;
+            margin-top: 40px;
+            text-shadow: 2px 2px 6px #000;
+        }
+
+        .scrolling-text {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'Pacifico', cursive;
+            text-shadow: 1px 1px 3px #000;
+            font-size: 3vw;
+            padding: 10px 0;
+        }
+
+        .scrolling-text span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll 15s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .next-button {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .next-button:hover {
+            background-color: darkgreen;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 10vw;
+            }
+
+            .scrolling-text {
+                font-size: 6vw;
+            }
+
+            .next-button {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1><u>WELCOME TO TOURIST GUIDENCE</u></h1>
+
+    <div class="scrolling-text">
+        <span>"Wherever you go becomes a part of you somehow."</span>
+    </div>
+
+    <a href="log in.html" class="next-button">Next</a>
+</body>
+</html>

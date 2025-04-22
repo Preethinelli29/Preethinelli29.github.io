@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://earth.org/wp-content/uploads/2021/10/rsz_sk_rahaman_hossain_1-min.jpg') no-repeat center center/cover;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            text-align: left;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #signUpButton {
+            background-color: green;
+            color: white;
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        #okButton {
+            display: none;
+            background-color: grey;
+            color: white;
+        }
+        #successMessage {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="signupForm" class="container">
+    <h2>Sign Up</h2>
+    
+    <input type="text" id="name" placeholder="Name">
+    <span id="nameError" class="error"></span>
+
+    <input type="email" id="email" placeholder="Email">
+    <span id="emailError" class="error"></span>
+
+    <input type="password" id="password" placeholder="Password">
+    <span id="passwordError" class="error"></span>
+
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+    <span id="confirmPasswordError" class="error"></span>
+
+    <button id="signUpButton" class="btn">Sign Up</button>
+    <button id="okButton" class="btn" onclick="showSuccess()">OK</button>
+</div>
+
+<div id="successMessage" class="container">
+    <h2>🎉 Sign-Up Successful!</h2>
+    <p>Welcome to our platform!</p>
+    <button class="btn" onclick="window.location.href='file:///C:/Users/PREETHI%20JASMINE/Desktop/states.html'">Go to Home</button>
+
+</div>
+
+<script>
+    const inputs = document.querySelectorAll("input");
+    const signUpButton = document.getElementById("signUpButton");
+    const okButton = document.getElementById("okButton");
+
+    function validate() {
+        let isValid = true;
+        
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+        document.getElementById("nameError").textContent = name ? "" : "Name is required";
+        document.getElementById("emailError").textContent = emailPattern.test(email) ? "" : "Invalid email format";
+        document.getElementById("passwordError").textContent = passwordPattern.test(password) ? "" : "Password must be at least 6 characters and contain a number";
+        document.getElementById("confirmPasswordError").textContent = confirmPassword === password ? "" : "Passwords do not match";
+
+        if (!name || !emailPattern.test(email) || !passwordPattern.test(password) || confirmPassword !== password) {
+            isValid = false;
+        }
+
+                signUpButton.disabled = !isValid;
+        signUpButton.style.opacity = isValid ? "1" : "0.5";
+        signUpButton.style.cursor = isValid ? "pointer" : "not-allowed";
+
+        return isValid;
+    }
+
+   
+    signUpButton.addEventListener("click", function() {
+        if (validate()) {
+            okButton.style.display = "block";
+        }
+    });
+
+    function showSuccess() {
+        document.getElementById("signupForm").style.display = "none";
+        document.getElementById("successMessage").style.display = "block";
+    }
+
+    function restart() {
+        document.getElementById("signupForm").style.display = "block";
+        document.getElementById("successMessage").style.display = "none";
+        document.getElementById("okButton").style.display = "none";
+        document.querySelectorAll("input").forEach(input => input.value = "");
+    }
+
+    
+    inputs.forEach(input => {
+        input.addEventListener("input", validate);
+    });
+</script>
+
+</body>
+</html>
